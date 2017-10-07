@@ -6,6 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +32,7 @@
         <scene sceneID="dKc-Sl-thC">
             <objects>
                 <collectionViewController id="IFQ-kL-GnP" userLabel="NHImagesListSearchViewController" customClass="NHImagesListSearchViewController" customModule="NHTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="og0-Ao-hhU">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="og0-Ao-hhU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,16 +53,31 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1iD-WT-1mO">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUo-nz-KQA">
+                                            <rect key="frame" x="140" y="140" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="cUo-nz-KQA" secondAttribute="height" id="p2O-J4-gyq"/>
+                                            </constraints>
+                                            <state key="normal" image="Uncheck"/>
+                                            <state key="selected" image="check"/>
+                                            <connections>
+                                                <action selector="selectImage:" destination="UUu-BY-B6G" eventType="touchUpInside" id="Jvo-Li-pbb"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="1iD-WT-1mO" secondAttribute="bottom" id="NQq-E7-buw"/>
+                                    <constraint firstItem="cUo-nz-KQA" firstAttribute="width" secondItem="1iD-WT-1mO" secondAttribute="width" multiplier="0.25" id="eds-rt-wP7"/>
                                     <constraint firstItem="1iD-WT-1mO" firstAttribute="leading" secondItem="UUu-BY-B6G" secondAttribute="leading" id="epm-fJ-z4D"/>
                                     <constraint firstItem="1iD-WT-1mO" firstAttribute="top" secondItem="UUu-BY-B6G" secondAttribute="top" id="g5j-g4-uS2"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="cUo-nz-KQA" secondAttribute="bottom" constant="2" id="oId-JV-Gwn"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="cUo-nz-KQA" secondAttribute="trailing" constant="2" id="sj5-ce-ST6"/>
                                     <constraint firstAttribute="trailing" secondItem="1iD-WT-1mO" secondAttribute="trailing" id="xMX-eU-kHm"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="1iD-WT-1mO" id="d34-h5-vkv"/>
+                                    <outlet property="selectBtn" destination="cUo-nz-KQA" id="Z5V-Ho-RsV"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -71,7 +89,7 @@
                     <navigationItem key="navigationItem" id="i8N-dF-bAh">
                         <nil key="title"/>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" id="XaQ-AE-T9A">
-                            <rect key="frame" x="67.5" y="7" width="240" height="30"/>
+                            <rect key="frame" x="59" y="7" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -79,6 +97,11 @@
                                 <outlet property="delegate" destination="IFQ-kL-GnP" id="Hqr-fV-drt"/>
                             </connections>
                         </textField>
+                        <barButtonItem key="rightBarButtonItem" title="Video !" id="x8x-cZ-lM2">
+                            <connections>
+                                <segue destination="Ogd-nb-lSN" kind="presentation" identifier="VideoPlayerSegue" id="6KJ-6O-uon"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="og0-Ao-hhU" id="osj-gQ-XXQ"/>
@@ -88,5 +111,56 @@
             </objects>
             <point key="canvasLocation" x="1126" y="370"/>
         </scene>
+        <!--Video Player View Controller-->
+        <scene sceneID="G1Y-Go-8DS">
+            <objects>
+                <viewController id="Ogd-nb-lSN" customClass="NHVideoPlayerViewController" customModule="NHTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DJG-9f-tfZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="tTf-pf-TK2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6TP-08-Dzb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKg-Y8-rPh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emM-94-LJC">
+                                <rect key="frame" x="5" y="25" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Fva-VH-ch0"/>
+                                    <constraint firstAttribute="height" constant="50" id="sOW-FW-ibv"/>
+                                </constraints>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="dismiss" destination="Ogd-nb-lSN" eventType="touchUpInside" id="id6-IE-QO6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tTf-pf-TK2" firstAttribute="top" secondItem="gKg-Y8-rPh" secondAttribute="bottom" id="JBY-SM-dpH"/>
+                            <constraint firstAttribute="trailing" secondItem="gKg-Y8-rPh" secondAttribute="trailing" id="Ncr-SD-kwT"/>
+                            <constraint firstItem="emM-94-LJC" firstAttribute="top" secondItem="DJG-9f-tfZ" secondAttribute="bottom" constant="5" id="Y7L-Yd-kua"/>
+                            <constraint firstItem="gKg-Y8-rPh" firstAttribute="leading" secondItem="6TP-08-Dzb" secondAttribute="leading" id="qox-Do-ZiI"/>
+                            <constraint firstItem="gKg-Y8-rPh" firstAttribute="top" secondItem="DJG-9f-tfZ" secondAttribute="bottom" id="yH8-eM-vZ6"/>
+                            <constraint firstItem="emM-94-LJC" firstAttribute="leading" secondItem="6TP-08-Dzb" secondAttribute="leading" constant="5" id="zY7-2a-wuJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="videoView" destination="gKg-Y8-rPh" id="f8c-OK-Kbv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K1C-Dn-BjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1926" y="369"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Uncheck" width="32" height="32"/>
+        <image name="check" width="32" height="32"/>
+        <image name="close" width="32" height="32"/>
+    </resources>
 </document>

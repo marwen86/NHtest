@@ -26,6 +26,10 @@
 		F583916E1F89248400DF75DC /* NHSearchImagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583916D1F89248400DF75DC /* NHSearchImagesPresenter.swift */; };
 		F58391701F89278400DF75DC /* NHImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583916F1F89278400DF75DC /* NHImageCell.swift */; };
 		F58391721F89297B00DF75DC /* UIImageView+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58391711F89297B00DF75DC /* UIImageView+Alamofire.swift */; };
+		F58391741F89316C00DF75DC /* NHMovieCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58391731F89316C00DF75DC /* NHMovieCreator.swift */; };
+		F58391761F893B0800DF75DC /* Array+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58391751F893B0800DF75DC /* Array+extension.swift */; };
+		F583917A1F893FF100DF75DC /* NHVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58391791F893FF100DF75DC /* NHVideoPlayerViewController.swift */; };
+		F583917C1F894C0200DF75DC /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583917B1F894C0200DF75DC /* UIViewController+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,10 @@
 		F583916D1F89248400DF75DC /* NHSearchImagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHSearchImagesPresenter.swift; sourceTree = "<group>"; };
 		F583916F1F89278400DF75DC /* NHImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImageCell.swift; sourceTree = "<group>"; };
 		F58391711F89297B00DF75DC /* UIImageView+Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Alamofire.swift"; sourceTree = "<group>"; };
+		F58391731F89316C00DF75DC /* NHMovieCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHMovieCreator.swift; sourceTree = "<group>"; };
+		F58391751F893B0800DF75DC /* Array+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+extension.swift"; sourceTree = "<group>"; };
+		F58391791F893FF100DF75DC /* NHVideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		F583917B1F894C0200DF75DC /* UIViewController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +169,7 @@
 			children = (
 				F50CC98D1F8917270096CEBE /* NHRequestManager.swift */,
 				F50CC9971F8922470096CEBE /* NHJsonParser.swift */,
+				F58391731F89316C00DF75DC /* NHMovieCreator.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -189,6 +198,7 @@
 			children = (
 				F583916B1F89246100DF75DC /* NHImagesListSearchViewController.swift */,
 				F583916F1F89278400DF75DC /* NHImageCell.swift */,
+				F58391791F893FF100DF75DC /* NHVideoPlayerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				F58391711F89297B00DF75DC /* UIImageView+Alamofire.swift */,
+				F58391751F893B0800DF75DC /* Array+extension.swift */,
+				F583917B1F894C0200DF75DC /* UIViewController+extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -404,17 +416,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F583917C1F894C0200DF75DC /* UIViewController+extension.swift in Sources */,
 				F58391701F89278400DF75DC /* NHImageCell.swift in Sources */,
 				F58391721F89297B00DF75DC /* UIImageView+Alamofire.swift in Sources */,
+				F583917A1F893FF100DF75DC /* NHVideoPlayerViewController.swift in Sources */,
 				F583916E1F89248400DF75DC /* NHSearchImagesPresenter.swift in Sources */,
 				F50CC9961F891CB50096CEBE /* NHResultImagesParser.swift in Sources */,
 				F50CC9691F8910E60096CEBE /* ViewController.swift in Sources */,
+				F58391761F893B0800DF75DC /* Array+extension.swift in Sources */,
 				F50CC9981F8922470096CEBE /* NHJsonParser.swift in Sources */,
 				F50CC9671F8910E60096CEBE /* AppDelegate.swift in Sources */,
 				F50CC98E1F8917270096CEBE /* NHRequestManager.swift in Sources */,
 				F50CC9901F891A0C0096CEBE /* NHImageModel.swift in Sources */,
 				F583916C1F89246100DF75DC /* NHImagesListSearchViewController.swift in Sources */,
 				F50CC9941F891C910096CEBE /* NHImageModelParser.swift in Sources */,
+				F58391741F89316C00DF75DC /* NHMovieCreator.swift in Sources */,
 				F50CC9921F891A2F0096CEBE /* NHResultImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
