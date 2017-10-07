@@ -16,6 +16,12 @@
 		F50CC9711F8910E60096CEBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50CC96F1F8910E60096CEBE /* LaunchScreen.storyboard */; };
 		F50CC97C1F8910E60096CEBE /* NHTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC97B1F8910E60096CEBE /* NHTestTests.swift */; };
 		F50CC9871F89111C0096CEBE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F50CC9861F89111C0096CEBE /* Podfile */; };
+		F50CC98E1F8917270096CEBE /* NHRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC98D1F8917270096CEBE /* NHRequestManager.swift */; };
+		F50CC9901F891A0C0096CEBE /* NHImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC98F1F891A0C0096CEBE /* NHImageModel.swift */; };
+		F50CC9921F891A2F0096CEBE /* NHResultImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9911F891A2F0096CEBE /* NHResultImages.swift */; };
+		F50CC9941F891C910096CEBE /* NHImageModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9931F891C910096CEBE /* NHImageModelParser.swift */; };
+		F50CC9961F891CB50096CEBE /* NHResultImagesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9951F891CB50096CEBE /* NHResultImagesParser.swift */; };
+		F50CC9981F8922470096CEBE /* NHJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9971F8922470096CEBE /* NHJsonParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +52,12 @@
 		F50CC97B1F8910E60096CEBE /* NHTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHTestTests.swift; sourceTree = "<group>"; };
 		F50CC97D1F8910E60096CEBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F50CC9861F89111C0096CEBE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		F50CC98D1F8917270096CEBE /* NHRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHRequestManager.swift; sourceTree = "<group>"; };
+		F50CC98F1F891A0C0096CEBE /* NHImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImageModel.swift; sourceTree = "<group>"; };
+		F50CC9911F891A2F0096CEBE /* NHResultImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHResultImages.swift; sourceTree = "<group>"; };
+		F50CC9931F891C910096CEBE /* NHImageModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImageModelParser.swift; sourceTree = "<group>"; };
+		F50CC9951F891CB50096CEBE /* NHResultImagesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHResultImagesParser.swift; sourceTree = "<group>"; };
+		F50CC9971F8922470096CEBE /* NHJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHJsonParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +124,11 @@
 		F50CC9651F8910E60096CEBE /* NHTest */ = {
 			isa = PBXGroup;
 			children = (
+				F50CC98C1F8912C70096CEBE /* Utilities */,
+				F50CC9881F8912A90096CEBE /* Manager */,
+				F50CC9891F8912A90096CEBE /* Model */,
+				F50CC98A1F8912A90096CEBE /* Presenter */,
+				F50CC98B1F8912A90096CEBE /* View */,
 				F50CC9661F8910E60096CEBE /* AppDelegate.swift */,
 				F50CC9681F8910E60096CEBE /* ViewController.swift */,
 				F50CC96A1F8910E60096CEBE /* Main.storyboard */,
@@ -129,6 +146,47 @@
 				F50CC97D1F8910E60096CEBE /* Info.plist */,
 			);
 			path = NHTestTests;
+			sourceTree = "<group>";
+		};
+		F50CC9881F8912A90096CEBE /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F50CC98D1F8917270096CEBE /* NHRequestManager.swift */,
+				F50CC9971F8922470096CEBE /* NHJsonParser.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		F50CC9891F8912A90096CEBE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F50CC98F1F891A0C0096CEBE /* NHImageModel.swift */,
+				F50CC9911F891A2F0096CEBE /* NHResultImages.swift */,
+				F50CC9931F891C910096CEBE /* NHImageModelParser.swift */,
+				F50CC9951F891CB50096CEBE /* NHResultImagesParser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F50CC98A1F8912A90096CEBE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F50CC98B1F8912A90096CEBE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F50CC98C1F8912C70096CEBE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,8 +392,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F50CC9961F891CB50096CEBE /* NHResultImagesParser.swift in Sources */,
 				F50CC9691F8910E60096CEBE /* ViewController.swift in Sources */,
+				F50CC9981F8922470096CEBE /* NHJsonParser.swift in Sources */,
 				F50CC9671F8910E60096CEBE /* AppDelegate.swift in Sources */,
+				F50CC98E1F8917270096CEBE /* NHRequestManager.swift in Sources */,
+				F50CC9901F891A0C0096CEBE /* NHImageModel.swift in Sources */,
+				F50CC9941F891C910096CEBE /* NHImageModelParser.swift in Sources */,
+				F50CC9921F891A2F0096CEBE /* NHResultImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +611,7 @@
 				F50CC9821F8910E60096CEBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F50CC9831F8910E60096CEBE /* Build configuration list for PBXNativeTarget "NHTestTests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +620,7 @@
 				F50CC9851F8910E60096CEBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

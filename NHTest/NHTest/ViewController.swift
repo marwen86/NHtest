@@ -13,6 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        NHRequestManager.sharedInstance.loadImageByQuery("flower", success: { (result) in
+            //
+        }) { (error) in
+            //
+        }
     }
 
     override func didReceiveMemoryWarning() {
