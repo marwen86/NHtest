@@ -8,8 +8,8 @@
 
 import UIKit
 protocol NHImageCellDelegate : class {
-    func addImageToList(_ image :UIImage)
-    func removeImageFromList(_ image :UIImage)
+    func addImageToList(_ imageModel :NHImageModel)
+    func removeImageFromList(_ imageModel :NHImageModel)
 }
 
 class NHImageCell: UICollectionViewCell {
@@ -23,6 +23,13 @@ class NHImageCell: UICollectionViewCell {
     }
     weak var  delegate: NHImageCellDelegate?
     
+    
+    override func awakeFromNib() {
+    
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.init(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 1.0).cgColor
+    }
+    
     func updateView() {
         guard let imageModel = imageModel, let url = URL(string:imageModel.previewURL) else {
             // add empty image
@@ -35,18 +42,18 @@ class NHImageCell: UICollectionViewCell {
         if let btn = sender as? UIButton {
             
             btn.isSelected = !btn.isSelected
-            guard let delegate = delegate , let image = imageView.image else {
+            guard let delegate = delegate , let imageModel = imageModel else {
                 return
             }
             
             switch btn.state.rawValue {
             case 5 :
                 //notify View to add image
-                delegate.addImageToList(image)
+                delegate.addImageToList(imageModel)
                 break
             case 1 :
                 //notify View to remove image
-                delegate.removeImageFromList(image)
+                delegate.removeImageFromList(imageModel)
                 break
             default:
                 break

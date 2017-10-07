@@ -29,6 +29,7 @@
 		F58391741F89316C00DF75DC /* NHMovieCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58391731F89316C00DF75DC /* NHMovieCreator.swift */; };
 		F58391761F893B0800DF75DC /* Array+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58391751F893B0800DF75DC /* Array+extension.swift */; };
 		F583917A1F893FF100DF75DC /* NHVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58391791F893FF100DF75DC /* NHVideoPlayerViewController.swift */; };
+		F583917C1F894C0200DF75DC /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583917B1F894C0200DF75DC /* UIViewController+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		F58391731F89316C00DF75DC /* NHMovieCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHMovieCreator.swift; sourceTree = "<group>"; };
 		F58391751F893B0800DF75DC /* Array+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+extension.swift"; sourceTree = "<group>"; };
 		F58391791F893FF100DF75DC /* NHVideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		F583917B1F894C0200DF75DC /* UIViewController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			children = (
 				F58391711F89297B00DF75DC /* UIImageView+Alamofire.swift */,
 				F58391751F893B0800DF75DC /* Array+extension.swift */,
+				F583917B1F894C0200DF75DC /* UIViewController+extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F583917C1F894C0200DF75DC /* UIViewController+extension.swift in Sources */,
 				F58391701F89278400DF75DC /* NHImageCell.swift in Sources */,
 				F58391721F89297B00DF75DC /* UIImageView+Alamofire.swift in Sources */,
 				F583917A1F893FF100DF75DC /* NHVideoPlayerViewController.swift in Sources */,

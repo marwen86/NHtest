@@ -12,6 +12,8 @@ import AVKit
 protocol imagesSearchProtocol : class {
     
     func refreshView(_ resultList: NHResultImages?)
+    func showReachbilityALert()
+    func showDownlaodErrorAlert(error : Error)
 }
 
 class NHImagesListSearchViewController: UICollectionViewController ,imagesSearchProtocol {
@@ -19,8 +21,13 @@ class NHImagesListSearchViewController: UICollectionViewController ,imagesSearch
     var resultRequest : NHResultImages?
     var imagesList : [NHImageModel]?
     var presenter : NHSearchImagesPresenter!
-    var listVideoImages = [UIImage]()
+    var listVideoImages = [NHImageModel]()
+    
+    
+    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    fileprivate let itemsPerRow: CGFloat = 3
     var activityIndicator : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter = NHSearchImagesPresenter(view: self)
@@ -55,8 +62,17 @@ extension NHImagesListSearchViewController {
         self.collectionView?.reloadData()
 
     }
+    
+    func showReachbilityALert() {
+        activityIndicator.stopAnimating()
+        self.reachbilityALert()
+    }
+    
+    func showDownlaodErrorAlert(error : Error) {
+         activityIndicator.stopAnimating()
+        self.requestAlertError(error: error)
+    }
 }
-
 
 extension NHImagesListSearchViewController {
 
@@ -66,7 +82,7 @@ extension NHImagesListSearchViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        guard let imagesList = imagesList else {
+        guard let imagesList = imagesList , !imagesList.isEmpty else {
             return 0
         }
         return imagesList.count
@@ -78,7 +94,7 @@ extension NHImagesListSearchViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NHImageCell",
                                                       for: indexPath) as! NHImageCell
         
-        guard let imagesList = imagesList else {
+        guard let imagesList = imagesList , !imagesList.isEmpty else {
             return cell
         }
         let imageModel = imagesList[indexPath.row]
@@ -89,15 +105,41 @@ extension NHImagesListSearchViewController {
         return cell
     }
 }
-extension NHImagesListSearchViewController : NHImageCellDelegate{
-    func addImageToList(_ image :UIImage) {
-        listVideoImages.append(image)
+
+extension NHImagesListSearchViewController : UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
     }
-    
-    func removeImageFromList(_ image :UIImage) {
-        listVideoImages.remove(object: image)
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
 }
+
+extension NHImagesListSearchViewController : NHImageCellDelegate{
+    func addImageToList(_ imageModel: NHImageModel) {
+        listVideoImages.append(imageModel)
+    }
+    
+    func removeImageFromList(_ imageModel: NHImageModel) {
+        //listVideoImages.remove(object: imageModel)
+    }
+}
+
 extension NHImagesListSearchViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -106,15 +148,15 @@ extension NHImagesListSearchViewController : UITextFieldDelegate {
         activityIndicator.frame = textField.bounds
         activityIndicator.startAnimating()
         guard let query = textField.text else {
-          //message empty text
+            //message empty text
             return true
         }
-       
+        
         self.presenter.loadImages(query)
         
         textField.text = nil
         textField.resignFirstResponder()
-   
+        
         return true
     }
 }

@@ -13,7 +13,7 @@ import AVFoundation
 class NHVideoPlayerViewController: UIViewController {
 
     @IBOutlet weak var videoView: UIView!
-    var listVideoImages :[UIImage]?
+    var listVideoImages :[NHImageModel]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +34,18 @@ class NHVideoPlayerViewController: UIViewController {
             return
         }
         
-        let settings = CXEImagesToVideo.videoSettings(codec: AVVideoCodecH264, width: (listVideoImages[0].cgImage?.width)!, height: (listVideoImages[0].cgImage?.height)!)
-        let movieMaker = CXEImagesToVideo(videoSettings: settings)
-        movieMaker.createMovieFrom(images: listVideoImages){ (fileURL:URL) in
+        var listURl = [URL]()
+        for imageModel in listVideoImages {
+            guard let url = URL(string:imageModel.webformatURL) else {
+                break
+            }
             
+            listURl.append(url)
+        }
+        
+        let settings = CXEImagesToVideo.videoSettings(codec: AVVideoCodecH264, width:640, height:640)
+        let movieMaker = CXEImagesToVideo(videoSettings: settings)
+        movieMaker.createMovieFrom(urls: listURl) { (fileURL) in
             let player = AVPlayer(url: fileURL)
             let playerController = AVPlayerViewController()
             playerController.player = player

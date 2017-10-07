@@ -24,6 +24,7 @@ class NHRequestManager {
     
     func loadImageByQuery(_ query: String, success : imagesListDownloadSuccess?, error : imagesDownloadError?) {
        
+        
         guard let requstUrl = NHRequestManager.generateLoadImagesListRequestURL(query) else {
             return
         }

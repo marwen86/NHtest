@@ -17,11 +17,18 @@ class NHSearchImagesPresenter: NSObject {
     }
     
     func loadImages(_ query :String) {
+        
+        guard Connectivity.isConnectedToInternet() else {
+            self.view?.showReachbilityALert()
+            return
+        }
+        
         NHRequestManager.sharedInstance.loadImageByQuery(query, success: {[weak self] (result) in
             //
             self?.view?.refreshView(result)
-        }) { (error) in
+        }) { [weak self] (error) in
             //
+            self?.view?.showDownlaodErrorAlert(error: error)
         }
     }
 }

@@ -6,7 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,10 +54,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUo-nz-KQA">
-                                            <rect key="frame" x="137" y="137" width="50" height="50"/>
+                                            <rect key="frame" x="140" y="140" width="50" height="50"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="JI8-LA-xOu"/>
-                                                <constraint firstAttribute="height" constant="50" id="Q82-VE-58r"/>
+                                                <constraint firstAttribute="width" secondItem="cUo-nz-KQA" secondAttribute="height" id="p2O-J4-gyq"/>
                                             </constraints>
                                             <state key="normal" image="Uncheck"/>
                                             <state key="selected" image="check"/>
@@ -67,10 +68,11 @@
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="1iD-WT-1mO" secondAttribute="bottom" id="NQq-E7-buw"/>
+                                    <constraint firstItem="cUo-nz-KQA" firstAttribute="width" secondItem="1iD-WT-1mO" secondAttribute="width" multiplier="0.25" id="eds-rt-wP7"/>
                                     <constraint firstItem="1iD-WT-1mO" firstAttribute="leading" secondItem="UUu-BY-B6G" secondAttribute="leading" id="epm-fJ-z4D"/>
                                     <constraint firstItem="1iD-WT-1mO" firstAttribute="top" secondItem="UUu-BY-B6G" secondAttribute="top" id="g5j-g4-uS2"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="cUo-nz-KQA" secondAttribute="bottom" constant="5" id="oId-JV-Gwn"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="cUo-nz-KQA" secondAttribute="trailing" constant="5" id="sj5-ce-ST6"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="cUo-nz-KQA" secondAttribute="bottom" constant="2" id="oId-JV-Gwn"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="cUo-nz-KQA" secondAttribute="trailing" constant="2" id="sj5-ce-ST6"/>
                                     <constraint firstAttribute="trailing" secondItem="1iD-WT-1mO" secondAttribute="trailing" id="xMX-eU-kHm"/>
                                 </constraints>
                                 <connections>
