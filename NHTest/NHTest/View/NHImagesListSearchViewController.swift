@@ -136,7 +136,7 @@ extension NHImagesListSearchViewController : NHImageCellDelegate{
     }
     
     func removeImageFromList(_ imageModel: NHImageModel) {
-        //listVideoImages.remove(object: imageModel)
+        listVideoImages.removeObject(object: imageModel)
     }
 }
 
