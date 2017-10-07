@@ -22,6 +22,10 @@
 		F50CC9941F891C910096CEBE /* NHImageModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9931F891C910096CEBE /* NHImageModelParser.swift */; };
 		F50CC9961F891CB50096CEBE /* NHResultImagesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9951F891CB50096CEBE /* NHResultImagesParser.swift */; };
 		F50CC9981F8922470096CEBE /* NHJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9971F8922470096CEBE /* NHJsonParser.swift */; };
+		F583916C1F89246100DF75DC /* NHImagesListSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583916B1F89246100DF75DC /* NHImagesListSearchViewController.swift */; };
+		F583916E1F89248400DF75DC /* NHSearchImagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583916D1F89248400DF75DC /* NHSearchImagesPresenter.swift */; };
+		F58391701F89278400DF75DC /* NHImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583916F1F89278400DF75DC /* NHImageCell.swift */; };
+		F58391721F89297B00DF75DC /* UIImageView+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58391711F89297B00DF75DC /* UIImageView+Alamofire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,10 @@
 		F50CC9931F891C910096CEBE /* NHImageModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImageModelParser.swift; sourceTree = "<group>"; };
 		F50CC9951F891CB50096CEBE /* NHResultImagesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHResultImagesParser.swift; sourceTree = "<group>"; };
 		F50CC9971F8922470096CEBE /* NHJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHJsonParser.swift; sourceTree = "<group>"; };
+		F583916B1F89246100DF75DC /* NHImagesListSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImagesListSearchViewController.swift; sourceTree = "<group>"; };
+		F583916D1F89248400DF75DC /* NHSearchImagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHSearchImagesPresenter.swift; sourceTree = "<group>"; };
+		F583916F1F89278400DF75DC /* NHImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImageCell.swift; sourceTree = "<group>"; };
+		F58391711F89297B00DF75DC /* UIImageView+Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Alamofire.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +179,7 @@
 		F50CC98A1F8912A90096CEBE /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				F583916D1F89248400DF75DC /* NHSearchImagesPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -178,6 +187,8 @@
 		F50CC98B1F8912A90096CEBE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F583916B1F89246100DF75DC /* NHImagesListSearchViewController.swift */,
+				F583916F1F89278400DF75DC /* NHImageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 		F50CC98C1F8912C70096CEBE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F58391711F89297B00DF75DC /* UIImageView+Alamofire.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -392,12 +404,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58391701F89278400DF75DC /* NHImageCell.swift in Sources */,
+				F58391721F89297B00DF75DC /* UIImageView+Alamofire.swift in Sources */,
+				F583916E1F89248400DF75DC /* NHSearchImagesPresenter.swift in Sources */,
 				F50CC9961F891CB50096CEBE /* NHResultImagesParser.swift in Sources */,
 				F50CC9691F8910E60096CEBE /* ViewController.swift in Sources */,
 				F50CC9981F8922470096CEBE /* NHJsonParser.swift in Sources */,
 				F50CC9671F8910E60096CEBE /* AppDelegate.swift in Sources */,
 				F50CC98E1F8917270096CEBE /* NHRequestManager.swift in Sources */,
 				F50CC9901F891A0C0096CEBE /* NHImageModel.swift in Sources */,
+				F583916C1F89246100DF75DC /* NHImagesListSearchViewController.swift in Sources */,
 				F50CC9941F891C910096CEBE /* NHImageModelParser.swift in Sources */,
 				F50CC9921F891A2F0096CEBE /* NHResultImages.swift in Sources */,
 			);
