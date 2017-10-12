@@ -44,7 +44,7 @@ class NHImagesListSearchViewController: UICollectionViewController ,imagesSearch
         if (segue.identifier == "VideoPlayerSegue") {
             // pass data to next view
             let videoVC = segue.destination as! NHVideoPlayerViewController
-            videoVC.listVideoImages = self.listVideoImages
+            videoVC.listVideoImages = self.imagesList
         }
     }
 

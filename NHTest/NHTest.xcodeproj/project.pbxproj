@@ -22,6 +22,7 @@
 		F50CC9941F891C910096CEBE /* NHImageModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9931F891C910096CEBE /* NHImageModelParser.swift */; };
 		F50CC9961F891CB50096CEBE /* NHResultImagesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9951F891CB50096CEBE /* NHResultImagesParser.swift */; };
 		F50CC9981F8922470096CEBE /* NHJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CC9971F8922470096CEBE /* NHJsonParser.swift */; };
+		F5833D7E1F902BF20082F539 /* NHAnimatorViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5833D7D1F902BF20082F539 /* NHAnimatorViewPresenter.swift */; };
 		F583916C1F89246100DF75DC /* NHImagesListSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583916B1F89246100DF75DC /* NHImagesListSearchViewController.swift */; };
 		F583916E1F89248400DF75DC /* NHSearchImagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583916D1F89248400DF75DC /* NHSearchImagesPresenter.swift */; };
 		F58391701F89278400DF75DC /* NHImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F583916F1F89278400DF75DC /* NHImageCell.swift */; };
@@ -66,6 +67,7 @@
 		F50CC9931F891C910096CEBE /* NHImageModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImageModelParser.swift; sourceTree = "<group>"; };
 		F50CC9951F891CB50096CEBE /* NHResultImagesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHResultImagesParser.swift; sourceTree = "<group>"; };
 		F50CC9971F8922470096CEBE /* NHJsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHJsonParser.swift; sourceTree = "<group>"; };
+		F5833D7D1F902BF20082F539 /* NHAnimatorViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHAnimatorViewPresenter.swift; sourceTree = "<group>"; };
 		F583916B1F89246100DF75DC /* NHImagesListSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImagesListSearchViewController.swift; sourceTree = "<group>"; };
 		F583916D1F89248400DF75DC /* NHSearchImagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHSearchImagesPresenter.swift; sourceTree = "<group>"; };
 		F583916F1F89278400DF75DC /* NHImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHImageCell.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				F583916D1F89248400DF75DC /* NHSearchImagesPresenter.swift */,
+				F5833D7D1F902BF20082F539 /* NHAnimatorViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			files = (
 				F583917C1F894C0200DF75DC /* UIViewController+extension.swift in Sources */,
 				F58391701F89278400DF75DC /* NHImageCell.swift in Sources */,
+				F5833D7E1F902BF20082F539 /* NHAnimatorViewPresenter.swift in Sources */,
 				F58391721F89297B00DF75DC /* UIImageView+Alamofire.swift in Sources */,
 				F583917A1F893FF100DF75DC /* NHVideoPlayerViewController.swift in Sources */,
 				F583916E1F89248400DF75DC /* NHSearchImagesPresenter.swift in Sources */,
@@ -574,6 +578,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NHTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSC.NHTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,6 +592,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NHTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = VSC.NHTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
