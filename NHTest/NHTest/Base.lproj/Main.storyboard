@@ -96,13 +96,14 @@
                                 <outlet property="delegate" destination="IFQ-kL-GnP" id="Hqr-fV-drt"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" title="Video !" id="x8x-cZ-lM2">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Video !" id="x8x-cZ-lM2">
                             <connections>
                                 <segue destination="Ogd-nb-lSN" kind="presentation" identifier="VideoPlayerSegue" id="6KJ-6O-uon"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="animatorLauncher" destination="x8x-cZ-lM2" id="Mvw-Ad-Mqd"/>
                         <outlet property="collectionView" destination="og0-Ao-hhU" id="osj-gQ-XXQ"/>
                     </connections>
                 </collectionViewController>

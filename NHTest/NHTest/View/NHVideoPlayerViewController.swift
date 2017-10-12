@@ -26,7 +26,7 @@ class NHVideoPlayerViewController: UIViewController {
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    var listVideoImages :[NHImageModel]?
+    var listSelectedImages :[NHImageModel]?
     let animationDuration: TimeInterval = 0.35
     let switchingInterval: TimeInterval = 3
     var index = 0
@@ -37,7 +37,7 @@ class NHVideoPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter = NHAnimatorViewPresenter(view: self)
-        self.presenter.prepareImage(listVideoImages)
+        self.presenter.prepareImage(listSelectedImages)
         playBtn.titleLabel?.text = "Pause"
         
     }
@@ -52,7 +52,7 @@ class NHVideoPlayerViewController: UIViewController {
     
     func playVideo(){
     
-        guard let listVideoImages = listVideoImages, !listVideoImages.isEmpty else {
+        guard let listVideoImages = listSelectedImages, !listVideoImages.isEmpty else {
             return
         }
         
