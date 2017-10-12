@@ -18,10 +18,15 @@ protocol imagesSearchProtocol : class {
 
 class NHImagesListSearchViewController: UICollectionViewController ,imagesSearchProtocol {
 
+    @IBOutlet weak var animatorLauncher: UIBarButtonItem!
     var resultRequest : NHResultImages?
     var imagesList : [NHImageModel]?
     var presenter : NHSearchImagesPresenter!
-    var listVideoImages = [NHImageModel]()
+    var listSelectedImages = [NHImageModel](){
+        didSet {
+            animatorLauncher.isEnabled = listSelectedImages.count > 1
+        }
+    }
     
     
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
@@ -44,7 +49,7 @@ class NHImagesListSearchViewController: UICollectionViewController ,imagesSearch
         if (segue.identifier == "VideoPlayerSegue") {
             // pass data to next view
             let videoVC = segue.destination as! NHVideoPlayerViewController
-            videoVC.listVideoImages = self.listVideoImages
+            videoVC.listSelectedImages = self.listSelectedImages
         }
     }
 
@@ -132,11 +137,11 @@ extension NHImagesListSearchViewController : UICollectionViewDelegateFlowLayout 
 
 extension NHImagesListSearchViewController : NHImageCellDelegate{
     func addImageToList(_ imageModel: NHImageModel) {
-        listVideoImages.append(imageModel)
+        listSelectedImages.append(imageModel)
     }
     
     func removeImageFromList(_ imageModel: NHImageModel) {
-        listVideoImages.removeObject(object: imageModel)
+        listSelectedImages.removeObject(object: imageModel)
     }
 }
 

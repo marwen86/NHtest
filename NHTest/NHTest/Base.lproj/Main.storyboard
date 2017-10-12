@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -97,13 +96,14 @@
                                 <outlet property="delegate" destination="IFQ-kL-GnP" id="Hqr-fV-drt"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" title="Video !" id="x8x-cZ-lM2">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Video !" id="x8x-cZ-lM2">
                             <connections>
                                 <segue destination="Ogd-nb-lSN" kind="presentation" identifier="VideoPlayerSegue" id="6KJ-6O-uon"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="animatorLauncher" destination="x8x-cZ-lM2" id="Mvw-Ad-Mqd"/>
                         <outlet property="collectionView" destination="og0-Ao-hhU" id="osj-gQ-XXQ"/>
                     </connections>
                 </collectionViewController>
@@ -123,10 +123,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKg-Y8-rPh">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b7D-Yo-ROH">
+                                <rect key="frame" x="16" y="85" width="343" height="572"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emM-94-LJC">
                                 <rect key="frame" x="5" y="25" width="50" height="50"/>
                                 <constraints>
@@ -138,24 +137,39 @@
                                     <action selector="dismiss" destination="Ogd-nb-lSN" eventType="touchUpInside" id="id6-IE-QO6"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2fr-MV-v0E">
+                                <rect key="frame" x="166.5" y="35" width="42" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Poz-aR-aVB">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
+                                        <state key="normal" title="Pause"/>
+                                        <connections>
+                                            <action selector="playStopAnimation:" destination="Ogd-nb-lSN" eventType="touchUpInside" id="aW1-Md-4oW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tTf-pf-TK2" firstAttribute="top" secondItem="gKg-Y8-rPh" secondAttribute="bottom" id="JBY-SM-dpH"/>
-                            <constraint firstAttribute="trailing" secondItem="gKg-Y8-rPh" secondAttribute="trailing" id="Ncr-SD-kwT"/>
+                            <constraint firstItem="2fr-MV-v0E" firstAttribute="centerX" secondItem="6TP-08-Dzb" secondAttribute="centerX" id="FFI-Jf-fM7"/>
+                            <constraint firstItem="b7D-Yo-ROH" firstAttribute="leading" secondItem="6TP-08-Dzb" secondAttribute="leadingMargin" id="FQC-1E-0QN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b7D-Yo-ROH" secondAttribute="trailing" id="MfV-Sw-IjQ"/>
                             <constraint firstItem="emM-94-LJC" firstAttribute="top" secondItem="DJG-9f-tfZ" secondAttribute="bottom" constant="5" id="Y7L-Yd-kua"/>
-                            <constraint firstItem="gKg-Y8-rPh" firstAttribute="leading" secondItem="6TP-08-Dzb" secondAttribute="leading" id="qox-Do-ZiI"/>
-                            <constraint firstItem="gKg-Y8-rPh" firstAttribute="top" secondItem="DJG-9f-tfZ" secondAttribute="bottom" id="yH8-eM-vZ6"/>
+                            <constraint firstItem="b7D-Yo-ROH" firstAttribute="top" secondItem="emM-94-LJC" secondAttribute="bottom" constant="10" id="bNj-W2-4Qx"/>
+                            <constraint firstItem="2fr-MV-v0E" firstAttribute="top" secondItem="DJG-9f-tfZ" secondAttribute="bottom" constant="15" id="vsv-VF-vMS"/>
+                            <constraint firstItem="tTf-pf-TK2" firstAttribute="top" secondItem="b7D-Yo-ROH" secondAttribute="bottom" constant="10" id="wxa-W2-9PM"/>
                             <constraint firstItem="emM-94-LJC" firstAttribute="leading" secondItem="6TP-08-Dzb" secondAttribute="leading" constant="5" id="zY7-2a-wuJ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="videoView" destination="gKg-Y8-rPh" id="f8c-OK-Kbv"/>
+                        <outlet property="imageView" destination="b7D-Yo-ROH" id="Ble-hA-Y6h"/>
+                        <outlet property="playBtn" destination="Poz-aR-aVB" id="8Ky-U7-r1E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1C-Dn-BjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="369"/>
+            <point key="canvasLocation" x="1925.5999999999999" y="368.36581709145429"/>
         </scene>
     </scenes>
     <resources>
