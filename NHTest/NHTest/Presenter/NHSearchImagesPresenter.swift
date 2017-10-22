@@ -23,7 +23,12 @@ class NHSearchImagesPresenter: NSObject {
             return
         }
         
-        NHRequestManager.sharedInstance.loadImageByQuery(query, success: {[weak self] (result) in
+        guard let str = self.view?.pageIndex else {
+          return
+        }
+        
+        let pageIndex = String(describing: str)
+        NHRequestManager.sharedInstance.loadImageByQuery(query,itemByPage: "20",page:pageIndex, success: {[weak self] (result) in
             //
             self?.view?.refreshView(result)
         }) { [weak self] (error) in

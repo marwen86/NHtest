@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        NHRequestManager.sharedInstance.loadImageByQuery("flower", success: { (result) in
+        NHRequestManager.sharedInstance.loadImageByQuery("flower", itemByPage: "12",page: "2", success: { (result) in
             //
         }) { (error) in
             //

@@ -14,14 +14,17 @@ protocol imagesSearchProtocol : class {
     func refreshView(_ resultList: NHResultImages?)
     func showReachbilityALert()
     func showDownlaodErrorAlert(error : Error)
+    var pageIndex : Int {get}
 }
 
 class NHImagesListSearchViewController: UICollectionViewController ,imagesSearchProtocol {
-
+    
     @IBOutlet weak var animatorLauncher: UIBarButtonItem!
     var resultRequest : NHResultImages?
-    var imagesList : [NHImageModel]?
+    var imagesList : [NHImageModel] =  [NHImageModel]()
     var presenter : NHSearchImagesPresenter!
+    var pageIndex = 1
+    var query : String?
     var listSelectedImages = [NHImageModel](){
         didSet {
             animatorLauncher.isEnabled = listSelectedImages.count > 1
@@ -36,10 +39,10 @@ class NHImagesListSearchViewController: UICollectionViewController ,imagesSearch
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter = NHSearchImagesPresenter(view: self)
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,7 +55,7 @@ class NHImagesListSearchViewController: UICollectionViewController ,imagesSearch
             videoVC.listSelectedImages = self.listSelectedImages
         }
     }
-
+    
 }
 
 extension NHImagesListSearchViewController {
@@ -63,9 +66,9 @@ extension NHImagesListSearchViewController {
         }
         activityIndicator.stopAnimating()
         self.resultRequest = resultRequest
-        self.imagesList = resultRequest.hits
+        self.imagesList.append(contentsOf: resultRequest.hits)
         self.collectionView?.reloadData()
-
+        
     }
     
     func showReachbilityALert() {
@@ -74,65 +77,75 @@ extension NHImagesListSearchViewController {
     }
     
     func showDownlaodErrorAlert(error : Error) {
-         activityIndicator.stopAnimating()
+        activityIndicator.stopAnimating()
         self.requestAlertError(error: error)
     }
 }
 
 extension NHImagesListSearchViewController {
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        guard let imagesList = imagesList , !imagesList.isEmpty else {
+        guard  !imagesList.isEmpty else {
             return 0
         }
         return imagesList.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NHImageCell",
                                                       for: indexPath) as! NHImageCell
         
-        guard let imagesList = imagesList , !imagesList.isEmpty else {
+        guard !imagesList.isEmpty else {
             return cell
         }
         let imageModel = imagesList[indexPath.row]
         cell.backgroundColor = UIColor.white
-   
+        
         cell.delegate = self
         cell.imageModel = imageModel
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath){
+        if let resultRequest = resultRequest ,  let query = query , indexPath.row == imagesList.count - 1 , imagesList.count < resultRequest.total {
+            pageIndex += 1
+            self.presenter.loadImages(query)
+            
+        }
+    }
+    
 }
 
 extension NHImagesListSearchViewController : UICollectionViewDelegateFlowLayout {
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+    
 }
 
 extension NHImagesListSearchViewController : NHImageCellDelegate{
@@ -157,6 +170,10 @@ extension NHImagesListSearchViewController : UITextFieldDelegate {
             return true
         }
         
+        resultRequest = nil
+        imagesList.removeAll()
+        pageIndex = 1
+        self.query = query
         self.presenter.loadImages(query)
         
         textField.text = nil

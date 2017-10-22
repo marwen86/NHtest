@@ -22,10 +22,10 @@ class NHRequestManager {
     
     static internal let sharedInstance = NHRequestManager()
     
-    func loadImageByQuery(_ query: String, success : imagesListDownloadSuccess?, error : imagesDownloadError?) {
+    func loadImageByQuery(_ query: String,itemByPage: String, page: String, success : imagesListDownloadSuccess?, error : imagesDownloadError?) {
        
         
-        guard let requstUrl = NHRequestManager.generateLoadImagesListRequestURL(query) else {
+        guard let requstUrl = NHRequestManager.generateLoadImagesListRequestURL(query,itemByPage: itemByPage,page: page) else {
             return
         }
         Alamofire.request(requstUrl).responseJSON { response in
@@ -52,14 +52,16 @@ class NHRequestManager {
     
    
     
-    class func generateLoadImagesListRequestURL(_ query: String) -> URL? {
+    class func generateLoadImagesListRequestURL(_ query: String, itemByPage: String, page: String) -> URL? {
         guard var components = URLComponents(string:API_DOWNLOAD_IMAGES_LIST_URL) else {
             return nil
         }
     
         components.queryItems = [URLQueryItem(name:"key", value:API_KEY),
                                  URLQueryItem(name:"q", value:query),
-                                 URLQueryItem(name:"image_type", value:"photo")]
+                                 URLQueryItem(name:"image_type", value:"photo"),
+                                 URLQueryItem(name:"per_page", value:itemByPage),
+                                 URLQueryItem(name:"page", value:page)]
         
         return components.url
     }
